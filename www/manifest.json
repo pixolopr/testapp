@@ -1,0 +1,12 @@
+
+{
+  "name": "Features of Magzine Gallery",
+  "short_name": "Magzine Gallery",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

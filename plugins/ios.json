@@ -1,0 +1,27 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "jaeger.Html5Video": {
+            "PACKAGE_NAME": "com.pixolo.magzine"
+        },
+        "org.apache.cordova.speech.speechrecognition": {
+            "MICROPHONE_USAGE_DESCRIPTION": " ",
+            "SPEECH_RECOGNITION_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.pixolo.magzine"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.pixolo.magzine"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.pixolo.magzine"
+        }
+    }
+}

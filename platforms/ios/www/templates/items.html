@@ -1,0 +1,102 @@
+<ion-view view-title="Items" hide-nav-bar="true">
+    <ion-content class="itemsbg fixedsize" on-touch="screentouched()">
+        <div class="row">
+            <div class="col col-33">
+                <h2 class="itemstitle">Features of the Magazine Gallery</h2>
+            </div>
+            <div class="col col-67">
+                <ion-scroll direction="x" style="height: 116px" on-drag-right="onTouch()">
+                    <div class="row">
+                        <div class="col changebtn" ng-repeat="item in items[language]" ng-click="changedesc($index)">
+                            <img src="{{item.image}}" class="structureitem animated rubberBand animdur2" ng-class="{selectedglow:items[language][itemnumber].id == item.id}">
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-10"></div>
+            <div class="col col-80 infobox">
+                <div class="row">
+                    <div class="col">
+                        <img id="contentimage" src="{{items[language][itemnumber].image}}" class="structuredescimg animated bounceIn">
+                    </div>
+                    <div class="col">
+                        <h1 id="contenthead" class="whitecolor texttitle" ng-class="{'englishfont':language==0, 'hindifont': language==1, punjabifont: language==2}">{{items[language][itemnumber].title}}</h1>
+                        <pre id="contentbox" class="textdesc" ng-class="{'englishfont':language==0, 'hindifont': language==1, punjabifont: language==2}" onscroll="screentouched()"> {{items[language][itemnumber].desc}}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-10"></div>
+        </div>
+
+        <div class="row footer">
+            <div class="col col-75">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col col-10"></div>
+                            <div class="col col-50">
+                                <div class="row">
+                                    <div class="col col-20">
+                                        <a class="button button-icon icon ion-ios-home homebtn" ng-click="gotohome()"></a>
+                                    </div>
+                                    <div class="col col-80">
+                                        <!--<div class="range volumecontrols">
+                                            <i class="icon ion-volume-low fontsize50px"></i>
+                                            <input type="range" name="volume">
+                                            <i class="icon ion-volume-high fontsize50px"></i>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-40">
+                                <button class="button langbutton englishfont" ng-click="changelanguage(0)" ng-class="{'btnselectedcolor':language == 0}">A</button>
+                                <!--<button class="button langbutton hindifont" ng-click="changelanguage(1)" ng-class="{'btnselectedcolor':language == 1}">A</button>
+                                <button class="button langbutton punjabifont" ng-click="changelanguage(2)" ng-class="{'btnselectedcolor':language == 2}">A</button>-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col col-25"></div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+<script>
+    $(document).ready(function() {
+
+        /*INITIALIZE SCROLL BAR*/
+        $.mCustomScrollbar.defaults.scrollButtons.enable = true; //enable scrolling buttons by default
+        $.mCustomScrollbar.defaults.axis = "y"; //enable 2 axis scrollbars by default
+
+        $("#contentbox").mCustomScrollbar({
+            theme: "rounded-dots",
+            callbacks: {
+                whileScrolling: function() {
+                    angular.element(document.getElementById('contentbox')).scope().screentouched();
+                },
+                alwaysTriggerOffsets: false
+            }
+        });
+
+        $('.changebtn').click(function() {
+            $("#contentbox").mCustomScrollbar({
+                theme: "rounded-dots",
+                callbacks: {
+                    whileScrolling: function() {
+                        angular.element(document.getElementById('contentbox')).scope().screentouched();
+                    },
+                    alwaysTriggerOffsets: false
+                }
+            });
+        });
+
+    });
+
+</script>
